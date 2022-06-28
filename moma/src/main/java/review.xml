@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewns">
+	<insert id="insert" parameterType="review">
+		<selectKey keyProperty="rvno" order="BEFORE" resultType="integer">
+			select nvl(max(rvno), 0) + 1 rvno from review
+		</selectKey>
+		insert into review values(#{rvno}, #{star_rate}, #{rv_content},
+		sysdate, 'n', #{mno}, #{cno})
+	</insert>
+	
+	<!-- 각 컨텐츠의 review list -->
+	<select id="select" resultType="review">
+		select * from (select rownum rn, a.* from
+		(select r.*, nickname from member m, review r
+		where m.mno = r.mno and cno = #{cno} and r.del = 'n' order by rvno desc) a)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 평균 별점 -->
+	<select id="selectStar" parameterType="integer" resultType="float">
+		select nvl(round(avg(star_rate), 1),0) from review where cno = #{cno} and del = 'n'
+	</select>
+	
+	<!-- 각 컨텐츠의 총 리뷰 갯수 -->
+	<select id="selectTotal" resultType="integer">
+		select count(*) from review where cno = #{cno} and del = 'n'
+	</select>
+	
+	<!-- moma 마이페이지 - 리뷰내역 -->
+	<select id="myList" parameterType="hashmap" resultType="review">
+       select *
+       from (select rowNum rn, e.* 
+       		   from ( select r.*, c.cname
+       		   			from review r, content c
+       		   			where r.cno = c.cno and r.mno = #{mno} and r.del = 'n' order by rvno desc) e)
+       where rn between #{startRow} and #{endRow}
+    </select>
+    
+    <!-- // 마이페이지 : 나의 총 리뷰 수 -->
+	<select id="getTotalMy" parameterType="integer" resultType="integer">
+		select count(*) from review where mno=#{mno} and del = 'n'
+	</select>
+	
+	<!-- // 마이페이지 : 리뷰 삭제 -->
+	<update id="delete" parameterType="integer">
+		update review set del='y' where rvno=#{rvno}	
+	</update>
+	
+	
+	<!-- // 마이페이지 리뷰 수정 : 해당 rvno의 * 조회 -->
+	<select id="selectRvno" parameterType="integer" resultType="review">
+		select * from review where rvno=#{rvno}
+	</select>
+	
+	<!-- // 마이페이지 리뷰 수정 -->
+	<update id="update" parameterType="review">
+		update review set star_rate=#{star_rate}, rv_content=#{rv_content} where rvno=#{rvno}
+	</update>
+	
+	<!-- admin 전체 리뷰 조회 -->
+	<select id="adList" parameterType="hashmap" resultType="review">
+		select * from (select rowNum rn, e.* from
+		(select r.*, m.nickname, c.cname from review r, member m, content c 
+		where r.mno=m.mno and r.cno=c.cno and r.del = 'n' order by rvno desc) e) 
+			where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 총 리뷰 수 조회 -->
+	<select id="getTotal" resultType="integer">
+		select count(*) from review where del = 'n' order by rvno desc
+	</select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="likesns">
+	<!-- 회원이 좋아요 했는지 체크 -->
+	<select id="select" resultType="likes">
+		select * from likes where mno = #{mno} and cno = #{cno}
+	</select>
+	
+	<insert id="insert1" parameterType="likes">
+		<selectKey keyProperty="mno" order="BEFORE" resultType="integer">
+			select nvl(max(lno), 0) + 1 mno from likes
+		</selectKey>
+		insert into likes values(#{lno},#{cno},#{mno})
+	</insert>
+	
+	<insert id="insert" parameterType="hashmap">
+      <selectKey keyProperty="lno" order="BEFORE" resultType="integer">
+            select nvl(max(lno), 0) + 1 lno from likes
+      </selectKey>
+      insert into likes values(#{lno}, #{cno}, #{mno})
+   </insert>
+	
+	<delete id="delete" parameterType="hashmap">
+		delete likes where mno = #{mno} and cno = #{cno}
+	</delete>
+	
+	<!-- 마이 페이지 - 좋아요 체크 수 -->
+	<select id="getTotalMy" parameterType="integer" resultType="integer">
+		select count(*) from likes where mno = #{mno}
+	</select>
+	
+	<!-- bb 좋아요한 컨텐츠 정보 조회 (좋아요:lno,cno 컨텐츠:cname) -->
+	<select id="myList" parameterType="hashmap" resultType="likes">
+		select *
+		from (select rowNum rn, e.*
+			   from ( select l.*, c.cname
+					   from likes l, content c
+					   where l.cno = c.cno and l.mno = #{mno} and c.del='n' order by lno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+</mapper>

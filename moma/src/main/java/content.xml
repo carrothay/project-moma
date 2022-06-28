@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contentns">
+
+	<!-- cname 중복 체크 -->
+	<select id="select" parameterType="string" resultType="content">
+		select *
+		from content where cname = #{cname,jdbcType=VARCHAR} and del='n'
+	</select>
+	
+	<!-- 컨텐츠 상세 select -->
+	<select id="selectView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and del='n'
+	</select>
+
+	<!-- 컨텐츠 통합 리스트 -->
+	<select id="selectList" resultType="content">
+		select * from content where del = 'n' order by cviews desc
+	</select>
+	
+	<!-- 드라마 전체 리스트 -->
+	<select id="selectDList" resultType="content">
+		select * from (select rownum rn, e.* from (
+		select * from content where del = 'n' and sort ='d' order by cno asc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 영화 전체 리스트 -->
+	<select id="selectMList" resultType="content">
+		select * from (select rownum rn, e.* from (
+		select * from content where del = 'n' and sort ='m' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 드라마 top 10 리스트 -->
+	<select id="selectDTopList" resultType="content">
+	<![CDATA[ 	select * from (select * from content where del = 'n' and sort = 'd' order by cviews desc) where rownum <= 10  ]]>
+	</select>
+	
+	<!-- 영화 top 10 리스트 -->
+	<select id="selectMTopList" resultType="content">
+	<![CDATA[ 	select * from (select * from content where del = 'n' and sort = 'm' order by cviews desc) where rownum <= 10 ]]>
+	</select>
+	
+	<!-- 영화 상세 select -->
+	<select id="selectMView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='m' and del='n'
+	</select>
+	
+	<!-- 드라마 상세 select -->
+	<select id="selectDView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='d' and del='n'
+	</select>
+	
+	<!-- 드라마 main total -->
+	<select id="getTotalD" resultType="integer">
+		select count(*) from content where del = 'n'  and sort='d'
+	</select>
+	
+	<!-- 영화 main total -->
+	<select id="getTotalM" resultType="integer">
+		select count(*) from content where del = 'n'  and sort='m'
+	</select>
+	
+	<!-- 태그로 리스트 조회 -->
+	<select id="selectDGenre" resultType="content" parameterType="hashmap">
+		select * from content where 
+		<foreach collection="genre" item="item" open="(" close=")" separator="or">
+			genre like '%'||#{item}||'%' 
+		</foreach>
+		and sort='d' and del = 'n' order by cno
+	</select>
+
+	<!-- 태그로 리스트 조회 -->
+	<select id="selectMGenre" resultType="content" parameterType="hashmap">
+		select * from content where
+		<foreach collection="genre" item="item" open="(" close=")" separator="or">
+			genre like '%'||#{item}||'%' 
+		</foreach>
+		and sort='m' and del = 'n' order by cno
+	</select>
+	
+	<!-- 검색 -->
+	<select id="search" parameterType="string" resultType="content">
+      select * from content a
+      where del = 'n' and cname IN
+      (select cname from content b where cname like '%'||#{srch}||'%' or genre like '%'||#{srch}||'%'
+      or director like '%'||#{srch}||'%' or actor like '%'||#{srch}||'%')
+	</select>
+	
+	<!-- moma 마이페이지 리뷰수정에서 쓸 cname -->
+	<select id="selectRvno" parameterType="integer" resultType="content">
+	   select cname
+	   from content c, review r
+	   where c.cno = r.cno and r.rvno=#{rvno} and r.del='n'
+	</select> 
+	
+	<!-- 컨텐츠 조회수 증가 -->
+	<update id="countUpdate" parameterType="integer">
+		update content set cviews = cviews + 1 where cno = #{cno}
+	</update>
+		
+	<!-- 관리자페이지 content total -->
+	<select id="getTotal" resultType="integer">
+		select count(*) from content
+	</select>
+	
+	<!-- 관리자페이지 컨텐츠 total 리스트 -->
+	<select id="selectTotalList" resultType="content">
+		select * from (select rownum rn, e.* from (
+		select * from content order by cno) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 관리자페이지 컨텐츠 등록 -->
+	<insert id="insert" parameterType="content">
+		<selectKey keyProperty="cno" order="BEFORE" resultType="integer">
+			 select nvl(max(cno),0)+1 cno from content
+		</selectKey>
+		insert into content values(#{cno,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{sort,jdbcType=CHAR}, 
+		#{clevel,jdbcType=INTEGER}, #{genre,jdbcType=VARCHAR}, #{hours,jdbcType=VARCHAR}, 
+		#{start_date,jdbcType=VARCHAR}, 0, #{netflix,jdbcType=VARCHAR}, #{watcha,jdbcType=VARCHAR}, #{tving,jdbcType=VARCHAR}, 
+		#{poster,jdbcType=VARCHAR}, 'n', 
+		#{director,jdbcType=VARCHAR}, #{actor,jdbcType=VARCHAR}, #{reserve,jdbcType=CHAR})
+	</insert>
+	
+	<!-- 관리자페이지 컨텐츠 등록에서 사용할 next cno -->
+	<select id="selectNextCno" resultType="string">
+		select nvl(max(cno),0)+1 cno from content
+	</select>
+	
+	<!-- 관리자페이지 컨텐츠 삭제용 -->
+	<update id="delete" parameterType="integer">
+		update content set del='y' where cno=#{cno}
+	</update>
+	
+	<!-- 관리자페이지 컨텐츠 삭제취소용 -->
+	<update id="delCancel" parameterType="integer">
+		update content set del='n' where cno=#{cno}
+	</update>
+	
+	<!-- 관리자페이지 컨텐츠 수정용 불러오기 -->
+	<select id="adSelectView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno}
+	</select>
+	
+	<!-- 관리자페이지 컨텐츠 수정 업데이트  -->
+	<update id="update" parameterType="content" >
+		update content 
+		set cname=#{cname,jdbcType=VARCHAR}, sort=#{sort,jdbcType=CHAR}, 
+			clevel=#{clevel,jdbcType=INTEGER}, genre=#{genre,jdbcType=VARCHAR},
+			hours=#{hours,jdbcType=VARCHAR}, start_date=#{start_date,jdbcType=VARCHAR}, 
+			netflix=#{netflix,jdbcType=VARCHAR}, watcha=#{watcha,jdbcType=VARCHAR},
+			tving=#{tving,jdbcType=VARCHAR}, director=#{director,jdbcType=VARCHAR}, 
+			actor=#{actor,jdbcType=VARCHAR}, reserve=#{reserve,jdbcType=CHAR}
+			<if test="poster != null and poster !=  '' ">
+				, poster=#{poster}
+			</if> 
+		where cno=#{cno}
+	</update>
+	
+	<!-- 관리자페이지 컨텐츠 검색 -->
+	<select id="adSearch" parameterType="hashmap" resultType="content">
+		select * from content
+		<choose>
+			<when test="searchKey.equals('cname')">where cname like '%'||#{searchValue}||'%'</when>
+			<when test="searchKey.equals('genre')">where genre like '%'||#{searchValue}||'%'</when>
+			<when test="searchKey.equals('director')">where director like '%'||#{searchValue}||'%'</when>
+			<otherwise>where actor like '%'||#{searchValue}||'%'</otherwise>
+		</choose>
+			order by cno desc
+	</select>
+</mapper>

@@ -1,0 +1,387 @@
+@charset "UTF-8";
+.point-color {
+	color: var(--point-color);
+	font-weight: 600;
+}
+
+/* myPage - likes 내용  */
+/* likes 이거 mypage로 바꾸고 사용하기 */
+
+.container_myMainMenu {
+	width: 70%;
+	margin: 0 auto;
+	/* margin-bottom: 120px; */
+	margin-top: 20%;
+	float: left;
+}
+
+.container_myMainContent {
+	width: 70%;
+	margin: auto;
+	/* margin-bottom: 120px; */
+	margin-top: 7%;
+	/* text-align:center; */
+	
+}
+
+/* content list */
+
+.content {
+	position:absolute;
+	left:15%;
+    width: 70%;
+	margin-top: 30%;
+	border-top: 1px solid white;
+	/* padding-top: 150px; */
+}
+
+.content_list {
+	padding-top: 20px;
+	position:absolute;
+}
+
+.content_list ul {
+	font-size: 0;
+	margin: 0 -12px 0 -12px;
+	padding-top: 30px;
+}
+
+.content_list ul li {
+	vertical-align: top;
+	display: inline-block;
+	width: 20%;
+	max-height: max-content;
+	padding: 0 12px 56px 12px;
+}
+
+.content_list ul li img {
+	width: 100%;
+	/* padding-bottom: 10%; */
+	/* vertical-align: middle;
+	object-fit: cover;
+	height: 18vw; */
+}
+
+.content .text_area .content_list_title {
+	font-size: 16px;
+	font-weight: 600;
+	padding-top: 6px;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	word-wrap: break-word;
+}
+
+.content_list .text_area {
+	position: relative;
+	display: inline-block;
+	width: 40%;
+	/* height: 5vw; */
+	vertical-align: middle;
+	margin-left: 2%;
+	
+	/* font-size: 16px;
+	font-weight: 600;
+	padding-top: 6px;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	word-wrap: break-word; */
+}
+
+/* menu 시작 */
+
+.menu {
+	position:relative;
+	/* position:absolute; */
+	left:15%;
+    top:20%;
+    width: 70%;
+	display: table;
+}
+
+.menu>ul {
+	display: table-row;
+}
+
+.menu>ul>li {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/* nav */
+.category>ul>li {
+	float: left;
+	width: 25%;
+	font-size: 15px;
+	font-weight: 600;
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+}
+
+.dot {
+	display: none;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: var(--point-color);
+	position: absolute;
+	top: 7%;
+	right: 25%;
+}
+
+/* 아이콘 */
+.category>ul>li>img {
+	display: block;
+	width: 50px;
+	margin: 0 auto;
+}
+
+/* menu 끝 ************************************************************** */
+
+/* 각 페이지 content(공통) */
+
+/* .menu {
+	position:absolute;
+	left:20%;
+    top:20%;
+    width: 100%;
+	display: table;
+} */
+
+
+
+.content ul {
+	width: 100%;
+	margin-top: 30px;
+	text-align:center;
+}
+
+.content ul li {
+	float: left;
+	width: 50%;
+	margin-bottom: 50px;
+}
+
+/* 내용 없을 때 ul */
+.noItems {
+	margin: 0px !important;
+}
+
+.noItems li {
+	width: 100% !important;
+	text-align: center;
+}
+
+.content>ul>li>a {
+	display: inline-block;
+	width: 100%;
+	
+}
+
+/* 썸네일or포스터 */
+.content>ul>li>a>img {
+	width: 40%;
+	object-fit: cover;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+/* 텍스트 영역 */
+.txt_area {
+	position: relative;
+	display: inline-block;
+	width: 40%;
+	/* height: 5vw; */
+	vertical-align: middle;
+	margin-left: 2%;
+}
+
+.cursor {
+	cursor: pointer;	
+}
+
+/* 타이틀 */
+.txt_title {
+	display: block;
+	font-size: 18px;
+	font-weight: 600;
+	/* overflow: hidden; */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 0 3% ;
+}
+
+.txt_content {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	/* overflow: hidden; */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 3% 0;
+}
+
+
+.txt_pre {
+    display: -webkit-box;
+    width: 100%;
+    height: inherit;
+    word-break: keep-all;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* 버튼영역 */
+.txt_bottom {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn_area {
+	position: absolute;
+    right: 3px;
+}
+
+.btn_small {
+	display: inline-block;
+	width: initial;
+	height: initial;
+	font-size: 14px;
+	text-align: right;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	color: #aaa;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.btn_small2 {
+	display: inline-block;
+	width: initial;
+	height: initial;
+	font-size: 15px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	color: #aaa;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+/* 내용(각 페이지 공통) 끝 ****************************** */
+
+/* paging */
+
+.paging {
+	margin: auto 0 auto 0;
+	clear: both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+
+.items {
+	position: relative;
+	display: inherit;
+	justify-content: center;
+    align-items: center;
+}
+
+.prev_btn {
+	display: inherit;
+	position: absolute;
+	top: 1px;
+	right: 100%;
+    align-items: center;
+}
+
+.next_btn {
+	display: inherit;
+	position: absolute;
+	top: 0px;
+	left: 100%;
+    align-items: center;
+}
+
+.next_btn button:nth-child(2) {
+	position: absolute;
+	top: 0;
+	left: 100%;
+}
+
+.paging button {
+    width: 30px;
+	border: none;
+	outline: 0;
+	background: none;
+	cursor: pointer;
+}
+
+.paging img {
+	width: 14px;
+	height: 14px;
+	vertical-align: bottom;
+}
+
+.paging button img:nth-child(2) {
+	margin-left: -10px;
+}
+
+
+.paging .page_num {
+	display: inline-block;
+	width: 25px;
+	text-align: center;
+	cursor: pointer;
+}
+
+/* scroll top button */
+body {
+	position: relative;
+}
+
+.scroll_top {
+	display: none;
+	position: fixed;
+	right: 8%;
+	bottom: 5%;
+	width: 48px;
+	height: 48px;
+	background: #fff;
+	box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.18);
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 99;
+}
+
+.scroll_top .arrow {
+	position: absolute;
+	top: 58%;
+	left: 50%;
+	width: 14px;
+	height: 14px;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* err */
+.err {
+	position: absolute;
+	bottom: -6px;
+	color: var(--point-color);
+	font-size: 13px;
+}

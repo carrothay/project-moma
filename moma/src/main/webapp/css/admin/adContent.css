@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+.ad_container_middle {
+	width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 200px;
+}
+
+.line {
+	width: 78%;
+	margin: 0 auto;
+	padding-top: 30px;
+	border-bottom : 1px solid #e4e4e4;
+}
+
+.ad_container_wide {
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 120px;
+    margin-top: 20px;
+}
+
+.ad_title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.container-table table{
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+th {
+	display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+    font-size: 15px;
+    border-bottom: 1px double var(--point-color);
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+
+td {
+	font-size:13px;
+	text-align: center;
+	border-bottom: 1px dashed #d5d4d6;
+}
+
+.top_box {
+	width:100%;
+	margin-top: 40px;
+	position: relative;
+	text-align: center;
+}
+
+.content_hover:hover{
+	color: var(--point-color);
+	text-decoration: underline;
+		
+}
+
+.adbtn {
+	width: 100px;
+    background-color: var(--point-color);
+    border: 1px solid var(--point-color);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-align:center;
+    padding: 10px;
+    position : relative;
+    float: right;
+}
+
+.adbtn:hover {
+	width: 100px;
+    background-color: #fff;
+    border: 1px solid var(--point-color);
+    color: var(--point-color);
+    padding: 10px;
+    position : relative;
+    float: right;
+}
+
+.ct_btn {
+    background-color: none;
+    font-size: 14px;
+    color: var(--point-color);
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.ct_btn:hover {
+	background-color: var(--point-color);
+	border: none;
+	font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.paging{
+	margin-top : 20px;
+}
+
+.adChk {
+	margin:0;
+	color: red;
+	font-size: 15px;
+}
+
+/* adContent search*/
+.searchForm {
+	display: inline;
+}
+
+.search_key {
+    border: none;
+    width: 100px;
+    height: 48px;
+    font-size: 16px;
+    color : var(--point-color);
+    border-bottom: 1px solid var(--point-color);
+    margin-bottom: 16px;
+    outline: 0;
+}
+.search_value {
+    border: none;
+    width: 300px;
+    height: 48px;
+    font-size: 16px;
+    color : var(--point-color);
+    border-bottom: 1px solid var(--point-color);
+    margin-bottom: 16px;
+    outline: 0;
+}

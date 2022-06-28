@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardcmtns">
+	<!-- 댓글 입력 시작 -->	
+	<insert id="insert" parameterType="boardcmt">	
+ 		<selectKey keyProperty="bcno" order="BEFORE" resultType="integer">
+			select nvl(max(bcno), 0) + 1 bcno from boardcmt
+		</selectKey>
+insert into boardcmt values(#{bcno},#{bc_content},sysdate,'n',#{bno},#{mno})
+	</insert>
+
+	<!-- 댓글 조회 -->
+	<select id="cmtlist" parameterType="integer" resultType="boardcmt">
+		select * from (select e.* from (
+		select cmt.*, nickname from boardcmt cmt, member m where cmt.mno=m.mno
+		and cmt.bno = #{bno} and cmt.del='n') e) order by bc_date
+	</select>
+	
+	<!-- 전체 댓글 리스트 조회(관리자) -->
+	<select id="cmtTotallist" resultType="boardcmt">
+		select * from (select e.* from (
+		select cmt.*, nickname from boardcmt cmt, member m where cmt.mno=m.mno) e)  order by bc_date
+	</select>
+
+	<!-- 댓글 삭제 -->
+	<update id="delete" parameterType="integer">
+	update boardcmt set del='y' where bcno=#{bcno}
+	</update>
+	
+	<!-- 총 댓글 수 -->
+	<select id="getTotalB" resultType="integer">
+		select count(*) from boardcmt
+	</select>
+
+
+</mapper>

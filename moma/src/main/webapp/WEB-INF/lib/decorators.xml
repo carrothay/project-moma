@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorator">
+	<decorator name="decorator" page="view.jsp">
+		<pattern>/views/board/*</pattern>
+		<pattern>/views/content/*</pattern>
+		<pattern>/views/member/loginForm.bb</pattern>
+		<pattern>/views/member/joinForm.bb</pattern>
+		<pattern>/views/member/findFormId.bb</pattern>
+		<pattern>/views/member/findFormPw.bb</pattern>
+		<pattern>/views/member/updateForm.bb</pattern>
+		<pattern>/views/myPage/*</pattern>
+		<pattern>/views/admin/*</pattern>
+		<pattern>/views/searchResult.so</pattern>
+	</decorator>
+	<!-- 아래 프로그램은 예외이므로 decorator를 적용하지 마라 -->
+	<excludes>
+		<pattern></pattern>
+	</excludes>
+</decorators>

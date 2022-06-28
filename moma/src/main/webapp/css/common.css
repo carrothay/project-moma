@@ -1,0 +1,301 @@
+@charset "UTF-8";
+
+:root {
+	--point-color: #6799FF;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* start header */
+header {
+	position: fixed;
+	width: 100%;
+	height: 150px;
+	padding: 20px 12% 0 12%;
+	top: 0;
+	background: #fff;
+	z-index: 99;
+}
+
+.header_inner {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.header_logo {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.header_logo img {
+	width: 200px;
+}
+
+/* nav */
+
+.nav {
+	list-style-type: none;
+}
+
+.nav_sub {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+}
+
+.nav_sub li {
+	float: left;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.nav_main {
+	position: absolute;
+    top: 70px;
+    right: 0;
+}
+
+.nav_main li {
+    float: left;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.nav_main a:hover {
+	color: var(--point-color);
+	cursor: pointer;
+}
+
+.nav_main a.active {
+	color: var(--point-color);
+}
+
+.nav_sub a:hover {
+	text-decoration: underline;
+}
+
+.nav_sub a {
+	color: #666;
+}
+
+/* end header */
+
+/* 컨테이너 */
+.container {
+	width: 566px;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 200px;
+}
+
+.container_wide {
+	width: 75%;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 150px;
+} 
+
+.container_middle {
+	width: 50%;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 200px;
+}
+
+/* footer */
+
+footer	{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 200px;
+	border-top: 1px solid #e4e4e4;
+	margin-top: auto;
+}
+
+.footer_inner {
+	font-size: 14px;
+	font-weight: 300;
+	text-align: center;
+}
+
+ .footer_logo {
+	margin-bottom: 20px;
+}
+
+
+/* layout */
+
+.title {
+	font-size: 24px;
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 56px;
+}
+
+/* input */
+input {
+	width: 50%;
+	height: 48px;
+	border: none;
+	border-bottom: 1px solid #000;
+	outline: 0;
+	font-size: 15px;
+	margin-bottom: 16px;
+	font-family: inherit;
+}
+
+input::placeholder {
+	color: #aaa;
+}
+
+/* select */
+
+select {
+	border: none;
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 16px;
+    outline: 0;
+}
+
+/* button */
+ 
+.btn {
+	width: 100%;
+	height: 56px;
+	background-color: var(--point-color);
+	border: none;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	margin-bottom: 24px;
+	cursor: pointer;
+}
+
+.btn_stroke {
+	border: 1px solid var(--point-color);
+	color: var(--point-color);
+	background: none;
+}
+
+.btn_small {
+	display: inline-block;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	padding: 14px 0;
+}
+
+/* paging */
+
+.paging {
+	clear: both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items {
+	position: relative;
+	display: inherit;
+	justify-content: center;
+    align-items: center;
+}
+
+.prev_btn {
+	display: inherit;
+	position: absolute;
+	top: 1px;
+	right: 100%;
+    align-items: center;
+}
+
+.next_btn {
+	display: inherit;
+	position: absolute;
+	top: 0px;
+	left: 100%;
+    align-items: center;
+}
+
+.next_btn button:nth-child(2) {
+	position: absolute;
+	top: 0;
+	left: 100%;
+}
+
+.paging button {
+    width: 30px;
+	border: none;
+	outline: 0;
+	background: none;
+	cursor: pointer;
+}
+
+.paging img {
+	width: 14px;
+	height: 14px;
+	vertical-align: bottom;
+}
+
+.paging button img:nth-child(2) {
+	margin-left: -10px;
+}
+
+
+.paging .page_num {
+	display: inline-block;
+	width: 25px;
+	text-align: center;
+	cursor: pointer;
+}
+
+/* scroll top button */
+body {
+	position: relative;
+}
+
+.scroll_top {
+	display: none;
+	position: fixed;
+	right: 8%;
+	bottom: 5%;
+	width: 48px;
+	height: 48px;
+	background: #fff;
+	box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.18);
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 99;
+}
+
+.scroll_top .arrow {
+	position: absolute;
+	top: 58%;
+	left: 50%;
+	width: 14px;
+	height: 14px;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* err */
+.err {
+	position: absolute;
+	bottom: -6px;
+	color: var(--point-color);
+	font-size: 13px;
+}

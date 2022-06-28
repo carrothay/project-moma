@@ -1,0 +1,271 @@
+@charset "UTF-8";
+
+/* 컨테이너 폼 (멤버-로그인-폼)*/
+
+.join {
+	margin-top: -25px;
+}
+
+.findresult {
+	margin : 25%;
+	text-align:center;
+}
+
+.container {
+	width: 70%;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 50px;
+}
+
+.container_form {
+	width: 566px;
+	margin: 5% auto;
+	/* margin-bottom: 120px;
+	margin-top: 200px; */
+}
+
+.container_submit {
+	width: 566px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	
+	/* margin-bottom: 50px;
+	margin-top: 80px; */
+}
+
+
+.container_submit2 {
+	width: 566px;
+	margin: 0 auto;
+	margin-bottom: 70px;
+	/* margin-top: 80px; */
+	margin-top: 30px;
+}
+
+/* 컨테이너 폼 (내정보수정)*/
+.container_myMainMenu {
+	width: 70%;
+	margin: 0 auto;
+	/* margin-bottom: 120px; */
+	margin-top: 20%;
+	float: left;
+}
+
+
+
+/* 버튼 */
+
+.btn2 {
+	display:inline;
+	width: 27%;
+	height: 43px;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	color: #aaa;
+	margin : 0 0 0 20px;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.btn1 {
+	display:inline;
+	width: 27%;
+	height: 43px;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	color: #aaa;
+	margin: 0 90px 0 106px; /* bottom 23px */
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.btn3 {
+	display:inline;
+	height: 43px;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	color: #aaa;
+	cursor: pointer;
+	text-decoration: underline;
+	float : right;
+    margin-right: 18%;
+}
+
+.container_submit > .btn {
+	width: 63%;
+	height: 56px;
+	background-color: var(--point-color);
+	border: none;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	margin-left: 19%;
+	margin-bottom: 24px;
+	cursor: pointer;
+}
+
+.btn_small {
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	background-color: var(--point-color);
+	border: none;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	padding: 14px 0;
+	margin:0 7% 0 7%;
+}
+
+.btn_small2 {
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	background-color: var(--point-color);
+	border: none;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	padding: 14px 0;
+	margin:0 7% 0 7%;
+}
+
+.btn_small_j {
+	display: inline-block;
+    width: 190px;
+    height: 50px;
+    text-align: center;
+    background-color: var(--point-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    padding: 14px 0;
+    margin: 0px -53px 0 79px;
+}
+
+/* 조인폼 */
+#join{
+	width: 100%;
+    height: 48px;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: 0;
+    font-size: 15px;
+    font-family: inherit;
+    padding:0;
+    margin:3px;
+}
+
+.check {
+	margin:2%;
+	font-size: 0;
+	position:relative;
+}
+
+.check_l {
+	margin:5%;
+	font-size: 0;
+	position:relative;
+}
+
+.check_l>input, .check_l>.chk-msg {
+	display:block;
+	position:relative;
+	margin: auto;
+	text-align : center;
+	width: 70%;
+}
+
+.check>input, .check>.chk-msg {
+	display:block;
+	position:relative;
+	margin: auto;
+	text-align : center;
+	width: 70%;
+}
+
+#chk1 {
+	border: 0px;
+	width: 10%;
+	height: 1em;
+	padding-left: 0px;
+}
+
+.checks input[type=radio] {
+    border: 0px;
+    width: 10%;
+    height: 1em;
+}
+.checks>li {
+    margin: 30px 5px 3% 23%;
+	text-align:left;
+}
+
+/* 에러메세지 */
+
+.chk-msg {
+	/* margin-top:1px; */
+	margin:0;
+	color: red;
+	font-size: 10px;
+}
+
+/* menu 시작 */
+
+.menu {
+	position:relative;
+	/* position:absolute; */
+	left:15%;
+    top:20%;
+    width: 70%;
+	display: table;
+}
+
+.menu>ul {
+	display: table-row;
+}
+
+.menu>ul>li {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/* nav */
+.category>ul>li {
+	float: left;
+	width: 25%;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+}
+
+.dot {
+	display: none;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: var(--point-color);
+	position: absolute;
+	top: 7%;
+	right: 25%;
+}
+
+/* 아이콘 */
+.category>ul>li>img {
+	display: block;
+	width: 50px;
+	margin: 0 auto;
+}

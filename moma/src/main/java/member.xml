@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberns">
+	
+	<!-- moma id로 회원 정보 조회 -->
+	<select id="select" parameterType="string" resultType="member">
+		select * from member where id=#{id} and del='n'
+	</select>
+	
+	<!-- email로 회원 정보 조회 -->
+	<select id="selectEmail" parameterType="string" resultType="member">
+		select * from member where email=#{email} and del='n'
+	</select>
+	
+	<!-- id로 회원번호 조회 -->
+	<select id="selectMno" parameterType="string" resultType="integer">
+		select mno from member where id=#{id}
+	</select>
+	
+	<!-- 회원번호로 * 조회 -->
+	<select id="selectByMno" parameterType="string" resultType="member">
+		select * from member where mno=#{mno}
+	</select>
+	
+	<!-- mno로 별명 조회 -->
+	<select id="selectNick" parameterType="integer" resultType="string">
+		select nickname from member where mno=#{mno}
+	</select>
+	
+	<!-- mno로 회원 정보 조회 -->
+	<select id="selectReserve" parameterType="integer" resultType="member">
+		select * from member where mno = #{mno}
+	</select>
+
+	<!-- moma 닉네임 중복확인 -->
+	<select id="confirmNickname" parameterType="string" resultType="member">
+		select * from member where nickname=#{nickname} and del='n'
+	</select>
+
+	<!-- moma joinAction 회원 가입 -->
+	<insert id="insert" parameterType="member">
+		<!-- 입력하기전에 특정키 값을 가져온 다음 그 값을 이용해서 처리하고 싶을 때!
+		order로 순서를 정해서 사용. before니까 mno최대값+1부터처리하고 mno부터~del까지 insert 됨-->
+		<selectKey keyProperty="mno" order="BEFORE" resultType="integer">
+			select nvl(max(mno), 0) + 1 mno from member
+		</selectKey>
+		insert into member values(#{mno},#{id},#{password},#{email},#{mname},
+			#{nickname},#{phone},#{sms_check},#{email_check}, sysdate, 'n')
+	</insert>
+	
+	<!-- 전체회원정보 조회 -->
+	<select id="list" parameterType="hashmap" resultType="member">
+		select * from (select rowNum rn, e.* from (select * from member order by mno ) e) 
+			where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 총 회원수 조회 -->
+	<select id="getTotal" resultType="integer">
+		select count(*) from member
+	</select>
+	
+	<!-- moma 아이디 찾기 -->
+	<select id="findId" parameterType="hashmap" resultType="member">
+		select * from member where mname=#{mname} and email=#{email} and del='n'
+	</select>
+	
+	<!-- moma 비밀번호 찾기 (안씀)-->
+	<select	id="findPassword" parameterType="hashmap" resultType="member">
+		select * from member where id=#{id} and email=#{email} and del='n'
+	</select> 
+	
+	<!-- 회원 검색(관리자) -->
+	 <select id="searchMember" parameterType="hashmap" resultType="member">
+		select * from member where
+		<choose>
+			<when test="searchKey.equals('id')"> id like '%'||#{searchValue}||'%'</when> 
+			<when test="searchKey.equals('name')"> name like '%'||#{searchValue}||'%'</when> 
+			<otherwise> nick_nm like '%'||#{searchValue}||'%'
+			</otherwise>
+		</choose>
+			 order by mno desc
+	</select>
+	
+	<!-- moma 회원정보 수정 -->
+	<update id="update" parameterType="integer">
+		update member set password=#{password}, email=#{email}, mname=#{mname}, nickname=#{nickname}, phone=#{phone}, sms_check=#{sms_check}, email_check=#{email_check} where mno=#{mno}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="delete" parameterType="integer">
+		update member set del='y' where mno=#{mno}	
+	</update> 
+
+</mapper>

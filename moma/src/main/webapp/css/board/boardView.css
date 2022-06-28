@@ -1,0 +1,226 @@
+@charset "UTF-8";
+
+.container_middle {
+	margin-top: 60px;
+}
+
+/* 상단 내용(썸네일, 타이틀, 조회수) */
+.container_top {
+	width: 100%;
+	height: 450px;
+	overflow: hidden;
+	position: relative;
+	margin-top: 50px;
+}
+
+.container_top>img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	z-index: 1;
+}
+
+.container_top .blackBox {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 2;
+	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+/* 타이틀 */
+.container_top>h2 {
+	position: absolute;
+	bottom: 70px;
+	left: 50px;
+	right: 30px;
+	color: #fff;
+	z-index: 3;
+	font-weight: bold;
+}
+
+/* 조회수*/
+.container_top>h5 {
+	position: absolute;
+	bottom: 40px;
+	left: 50px;
+	color: #fff;
+	font-weight: 400;
+	z-index: 4;
+}
+
+/* 내용 */
+.contents {
+	margin-top: 50px;
+	padding: 50px;
+	border-bottom: 1px solid #e4e6f5;
+	border-top: 1px solid #e4e6f5;
+}
+
+.contents pre {
+	word-break: keep-all;
+	white-space: pre-wrap;
+	font-family: inherit;
+}
+
+/* 하단 버튼 영역 */
+.container_bottom {
+	display: block;
+	margin-top: 40px;
+	padding: 0 0 40px;
+}
+
+.return_box>button{
+	background-color: #6799FF;
+	color:white;
+	display: block;
+	width: 100px;
+	height: 50px;
+	text-align: center;
+	padding: 14px 0;
+	margin: auto;
+	border: none;
+	position:relative;
+	cursor:pointer;
+	font-family: 'Apple SD Gothic Neo', 'AppleSDGothicNeo';
+}
+
+.return_box>button:hover{
+	background: white;
+	color: #6799FF;
+	border: 1px solid #6799FF;
+}
+
+.container_bottom>span {
+	display: inline-block;
+	font-size: 16px;
+	vertical-align: middle;
+	padding-right: 5px;
+}
+
+
+/* 게시글 끝 댓글 시작 *********************************************/
+
+/* 댓글 폼 */
+
+.sub_title {
+	font-weight: 600;
+	font-size: 17px;
+	padding: 36px 0 24px 0;
+	font-weight: 700;
+}
+
+textarea {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid #ddd;
+	margin-top: 20px;
+	border-radius: 15px;
+	outline: 0;
+	font-size: 15px;
+	padding: 20px 12px;
+	line-height: 22px;
+	font-family: 'Apple SD Gothic Neo', 'AppleSDGothicNeo';
+	resize: none;
+}
+
+textarea::placeholder {
+	color: #aaa;
+}
+
+/* submit 버튼 div */
+.submit_box {
+	text-align: center;
+}
+
+/* 댓글 입력 폼 제출 버튼 */
+.cmt_insert_frm .submit_box input {
+	width: 50%;
+	margin-top: 24px;
+}
+
+/* 댓글 목록 전체 div */
+.comments {
+	clear: both;
+	border-top: 1px solid #e4e6f5;
+}
+
+/* 1개의 댓글 div */
+.cmt_list {
+	border-bottom: 1px solid #e4e4e4;
+	max-width: 100%;
+	margin-top: 20px;
+	padding: 15px 20px;
+	background: #fceff1;
+	border-radius: 15px;
+}
+
+/* 목록 상단 - 프로필, 닉네임, 버튼 */
+.cmt_top {
+	font-weight: 600;
+}
+
+/* 삭제 더보기 버튼 */
+.updatebtn_area {
+	display: inline-block;
+	float: right;
+	position: relative;
+}
+
+.updatebtn_area .more_btn {
+    display: inline-block;
+	width: 20px;
+	cursor: pointer;
+    padding-left: 9px;
+}
+
+.updatebtn_area .more_btn .dot {
+	display: block;
+	width: 2px;
+	height: 2px;
+	background-color: #333;
+	border-radius: 50%;
+	margin-bottom: 3px;
+}
+
+.updatebtn_area .more_area {
+	/* display: none; */
+    position: absolute;
+    top: 38px;
+    right: 7px;
+    width: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+}
+
+.more_area_txt {
+    display: block;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+.more_area_txt:first-child {
+    border-bottom: 1px solid #e4e4e4;
+}
+.cmt_con {
+	clear: both;
+	width: 90%;
+	font-family: inherit;
+	white-space: pre-wrap;
+	margin: 8px 0 2px;
+	line-height:24px;
+	color: #666;
+}
+
+.cmt_date {
+	font-size: 13px;
+	color: #444;
+	margin-bottom: 5px;
+	line-height: 1;
+	text-align: right;
+}

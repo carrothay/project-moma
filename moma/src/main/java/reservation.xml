@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reservationns">
+	<!-- 예매완료 -->
+	<insert id="insert" parameterType="reservation">
+		<selectKey keyProperty="rsno" order="BEFORE" resultType="integer">
+			select nvl(max(rsno), 0)+1 rsno from reservation
+		</selectKey>
+			insert into reservation values(#{rsno}, #{rsdate,jdbcType=DATE}, #{rstime,jdbcType=VARCHAR},
+			 #{rsnum,jdbcType=INTEGER}, #{cinema,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, 'n', #{price,jdbcType=INTEGER}, #{mno}, #{cno})
+	</insert>
+	
+	<!-- 예매취소 -->
+	<delete id="delete" parameterType="integer">
+		delete reservation where rsno = #{rsno}
+	</delete>
+	
+	<!-- moma 마이페이지 - 예매내역 -->
+	<!-- 예약모든정보 그리고 컨텐츠이름 컨텐츠포스터 조회. // del을 c.del도 'n'일때로 조회해야 하나?-->
+    <select id="myList" parameterType="hashmap" resultType="reservation">
+       select *
+       from (select rowNum rn, e.* 
+       		   from ( select r.*, c.cname, c.poster
+       		   			from reservation r, content c
+       		   			where r.cno = c.cno and r.mno = #{mno} and r.del = 'n' order by rsno desc) e)
+       where rn between #{startRow} and #{endRow}
+    </select>
+    
+	<!-- moma 마이페이지 - 전체 예약 수 -->
+	<select id="getTotalMy" parameterType="integer" resultType="integer">
+		select count(*) from reservation where mno=#{mno} and del='n'
+	</select>
+	
+	<!-- moma 마이페이지 - 내가 예약한 컨텐츠의 cno  -->
+	<select id="selectCno" parameterType="integer" resultType="reservation">
+		select cno from reservation where mno = #{mno} order by cno
+	</select>
+</mapper>
