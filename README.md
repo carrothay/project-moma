@@ -8,27 +8,27 @@ The website allows users to get information of movies and dramas, book movie tic
 
 ##  1. Intro
 
-###  1. Purpose/Motive
+###  1.1. Purpose/Motive
 - Increment of online-only media consumption
 - Diversification of OTT(Over The Top, streaming service) platforms
 - Dispersal of movie booking websites
 
-###  2. Why MOMA
+###  1.2. Why MOMA
 - Offers a wide selection of media genres and real reviews from users
 - Provides a simple and easy web page of various contents from multiple OTT platforms
 
 
-###  3. Expected Outcome
+###  1.3. Expected Outcome
 - Builds a healthy online community through sharing practical reviews
 - Improves connectivity efficiency by providing direct OTT url for each content
 - Improves user convenience with offering direct movie booking service
 
-###  4. Project timescale / team members
+###  1.4. Project Timescale / Team Members
 
 - 16 March 2022 ~ 19 April 2022
-- 4 members
+- 4 members (Back-end)
 
-##  2. Techs used
+##  2. Techs Used
 
 |Development Environment|Techs/Tool|
 |:---:|:---:|
@@ -39,12 +39,37 @@ The website allows users to get information of movies and dramas, book movie tic
 | Language | Java/JSP, JavaScript/jQuery, HTML5/CSS3 |
 | Web Framework | MyBatis |
 
-##  3.ERD
+##  3. ERD
 
 ![](https://github.com/carrothay/project-moma/blob/main/images/erd.jpg)
 
 ##  4. Main Functions
 
+- Main page
+  - Top 10 contents by view count: Carousel function
+- Content page
+  - Includes director, actors, genre, running time etc
+  - Includes review list and star rates
+- Booking movie tickets / OTT link
+  - Activates booking button if the movie is showing now
+  - Includes OTT buttons (Netflix/Watcha/Tving) that directly link to streaming platforms
+- Search function
+  - Allows to choose multiple genres and search result will appear sorted by registered number
+- Admin Forum page
+  - Designed by grid function and responsive css
+  - Recommends media and introduces synopsis
+  - Allows users to write comment on the post
+- My page
+  - Bookmark list
+  - My reservation list
+  - My review list
+  - My Info
+- Admin page
+  - Member list
+  - Contents list
+  - Forum list
+  - Review list
+  
 <details>
 
 <summary><b>Functional Description</b></summary>
@@ -76,9 +101,9 @@ JSP MVC model 2
 </div>
 </details>
 
-<!--
+## 5. Screenshots of web pages
 
-## 5. Demo pages
+<!--
 
 ## 6. Refactoring
 
