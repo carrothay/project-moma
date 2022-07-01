@@ -104,24 +104,34 @@ JSP MVC model 2
 ## 5. Screenshots of web pages
 Main page<br>
 <img src="https://github.com/carrothay/project-moma/blob/main/images/moma1.png" width="80%"><br>
+***
 Genre Filter<br>
 <img src="https://github.com/carrothay/project-moma/blob/main/images/moma2.png" width="80%"><br>
+***
 Movie list<br>
 <img src="https://github.com/carrothay/project-moma/blob/main/images/moma3.png"><br>
+***
 Content detail page<br>
 <img src="https://github.com/carrothay/project-moma/blob/main/images/moma6.png" width="80%"><br>
+***
 Review list<br>
 ![](https://github.com/carrothay/project-moma/blob/main/images/moma5.png)<br>
+***
 Booking movie button<br>
 ![](https://github.com/carrothay/project-moma/blob/main/images/moma4.png)<br>
+***
 OTT link button<br>
 ![](https://github.com/carrothay/project-moma/blob/main/images/moma7.png)<br>
+***
 Admin forum<br>
 <img src="https://github.com/carrothay/project-moma/blob/main/images/moma8.png" width="80%"><br>
+***
 My page - my bookings<br>
 ![](https://github.com/carrothay/project-moma/blob/main/images/moma9.png)<br>
+***
 Admin page - content list<br>
 <img src="https://github.com/carrothay/project-moma/blob/main/images/moma10.png" width="80%"><br>
+***
 Admin page - forum post list<br>
 <img src="https://github.com/carrothay/project-moma/blob/main/images/moma11.png" width="80%"><br>
 
