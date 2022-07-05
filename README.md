@@ -92,9 +92,7 @@ JSP MVC model 2
 
 6: Web Server sends the web page to the client.
 
-###  4.2 Controller
-
-###  4.3 Menu Tree
+###  4.2 Menu Tree
 
 ![](https://github.com/carrothay/project-moma/blob/main/images/menutree.jpg)
 
